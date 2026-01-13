@@ -1,0 +1,61 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel</title>
+<link href="090413.css" rel="stylesheet" type="text/css" />
+<link href="160324.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+.style7 {color: #000000; }
+
+.style10 {color: #000000; }
+
+.style1 {color: #0000FF}
+
+</style>
+</head>
+
+<body>
+<p><span class="X-Large-Bold-RED">エクセル関数</span></p>
+<p class="Large-Bold-Red">・誤差関数の逆関数</p>
+<p class="Blue-Bold">エクセルにおいて誤差関数の逆関数はありません！</p>
+<p>しかし，<a href="https://oshiete.goo.ne.jp/qa/2482929.html" target="_blank">ネットで検索すると</a>，既存の関数で誤差関数の逆関数を作っていただいている方がおりました，ありがとうございます．</p>
+<p>その方法とは，<span class="Large-Bold-Red">ERFINV(x)</span>，という関数を定義すると，</p>
+<p>\(\Large \displaystyle   \begin{eqnarray}  ERFINV(x) &amp;=&amp; \frac{1}{\sqrt{2}} NORMSINV \left\{ \frac{1+x}{2} \right\}  \\<br />
+  &amp;=&amp; NORMINV 
+\left\{ \frac{1+x}{2}, 0, \frac{1}{\sqrt{2}} \right\}  \\<br />
+\end{eqnarray}  \)</p>
+<p>で計算できるとのことです．</p>
+<p>別にエクセルで頑張らなくても，</p>
+<p class="Blue-Bold">・<a href="https://www.wolframalpha.com" target="_blank">WolframAlpha</a></p>
+<p>erf(0.5) = 0.496936...</p>
+<p>erfinv(0.475*2)*sqrt(2) = 1.95996...</p>
+<p class="Blue-Bold">・<a href="https://www.wolfram.com/mathematica/" target="_blank">Mathematica</a></p>
+<p>InverseErf[0.5] = 0.476936</p>
+<p>InverseErf[0.475*2]*Sqrt[2] = 1.95996</p>
+<p>とちゃんとした関数があるのですが，エクセル内で解析をしたい場合には必要となります．</p>
+<p>&nbsp;</p>
+<p>次ページからそれぞれの式に関して解いていきましょう．<a href="Excel-function.html"><br />
+</a></p>
+<p><span class="style7"><a href="Excel-Gauss-02.html"><img src="L-arrow.png" alt="l" width="57" height="34" /></a> <a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span><a href="Excel-Gauss-04.html"><img src="R-arrow.png" alt="r" width="57" height="34" border="0" /></a></p>
+</body>
+</html>

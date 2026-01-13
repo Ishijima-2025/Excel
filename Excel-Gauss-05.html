@@ -1,0 +1,78 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel</title>
+<link href="090413.css" rel="stylesheet" type="text/css" />
+<link href="160324.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+.style7 {color: #000000; }
+
+.style10 {color: #000000; }
+
+.style1 {color: #0000FF}
+
+</style>
+</head>
+
+<body>
+<p><span class="X-Large-Bold-RED">エクセル関数</span></p>
+<p class="Large-Bold-Red">・誤差関数の逆関数</p>
+<p class="Large-Bold-Red">・\(\Large \displaystyle     ERFINV(x) = NORMINV 
+\left\{ \frac{1+x}{2}, 0, \frac{1}{\sqrt{2}} \right\}    \)</p>
+<p>まず，</p>
+<p class="Blue-Bold">・NORM.DIST(x，μ，σ，TRUE)　：　正規分布（平均μ, 標準偏差σ）の累積分布関数</p>
+<p>\(\Large \displaystyle   \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{- \infty}^x exp \left\{ - \frac{(t - \mu)^2}{2 \sigma^2} \right\} dt \)</p>
+<p>ここで，</p>
+<p>\(\Large \displaystyle \mu = 0, \ \sigma = \frac{1}{ \sqrt{2}} \)</p>
+<p>とすると，</p>
+<p>\(\Large \displaystyle   NORM.DIST (x, 0, \frac{1}{ \sqrt{2}}, TRUE) = \frac{1}{\sqrt{ \pi}} \int_{- \infty}^x exp \left( - t^2 \right) dt \)</p>
+<p>\(\Large \displaystyle    = \frac{1}{\sqrt{ \pi}} \int_{- \infty}^0 exp \left( - t^2 \right) dt + \frac{1}{\sqrt{ \pi}} \int_{0}^x exp \left( - t^2 \right) dt\)</p>
+<p>\(\Large \displaystyle    = -\frac{1}{\sqrt{ \pi}} \int_0^{- \infty} exp \left( - t^2 \right) dt + \frac{1}{\sqrt{ \pi}} \int_{0}^x exp \left( - t^2 \right) dt\)</p>
+<p>これは，\(\Large \displaystyle    ERF(x) = \frac{2}{\sqrt{\pi}} \int_{0}^x exp \left( - t^2 \right) dt , \ ERF(- \infty) = -1 \)</p>
+<p>から，</p>
+<p>\(\Large \displaystyle    = -\frac{-1}{2} + \frac{ERF(x)}{2} \)</p>
+<p>\(\Large \displaystyle    = \frac{1}{2} \left(1 + ERF(x) \right) \)</p>
+<p>つまり，\(\Large \displaystyle     1 + ERF(x) = 2 \cdot NORM.DIST (x, 0, \frac{1}{ \sqrt{2}}, TRUE) \)</p>
+<p>との関係を導き出すことができます，まだここまでは<span class="Blue-Bold">逆関数</span>が出てきていません．</p>
+<p>ここで，</p>
+<p>\(\Large \displaystyle     W \equiv NORM.DIST (x, 0, \frac{1}{ \sqrt{2}}, TRUE) \)</p>
+<p>\(\Large \displaystyle     Z \equiv ERF \left( x \right) \)</p>
+<p>とおくと，WとZは，</p>
+<p>\(\Large \displaystyle     W = \frac{1 +Z}{2} \)</p>
+<p>次にそれぞれの逆関数を求めてみましょう．</p>
+<p>\(\Large \displaystyle      NORMSDIST^{-1}(W, 0, \frac{1}{ \sqrt{2}}) = x \)</p>
+<p>\(\Large \displaystyle      ERF^{-1}(Z) = x  \)</p>
+<p>となりますので，</p>
+<p>\(\Large \displaystyle      ERF^{-1}(Z) = \frac{1}{\sqrt{2}}  NORMSDIST^{-1}(W, 0, \frac{1}{ \sqrt{2}},) \)</p>
+<p>\(\Large \displaystyle       = \frac{1}{\sqrt{2}}  NORMSDIST^{-1}\left\{\frac{1 +Z}{2}  ,0, \frac{1}{ \sqrt{2}} \right\} \)</p>
+<p>となって，</p>
+<p>\(\Large \displaystyle       ERFINV(x) = \frac{1}{\sqrt{2}}  NORMSDIST^{-1} \left\{\frac{1 +x}{2} ,0, \frac{1}{ \sqrt{2}} \right\} \)</p>
+<p>つまり，</p>
+<p>\(\Large \displaystyle        \color{red}{ERFINV(x) = NORMINV \left\{ \frac{1+x}{2}, 0, \frac{1}{\sqrt{2}} \right\}} \)</p>
+<p>を導き出すことができました．</p>
+<p>&nbsp;</p>
+<p>次ページから二つの式を比較していきましょう．<a href="Excel-function.html"><br />
+</a></p>
+<p><span class="style7"><a href="Excel-Gauss-04.html"><img src="L-arrow.png" alt="l" width="57" height="34" /></a> <a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span><a href="Excel-Gauss-06.html"><img src="R-arrow.png" alt="r" width="57" height="34" border="0" /></a></p>
+</body>
+</html>

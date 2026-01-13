@@ -1,0 +1,137 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel</title>
+<link href="090413.css" rel="stylesheet" type="text/css" />
+<link href="160324.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+.style7 {color: #000000; }
+
+.style10 {color: #000000; }
+
+.style1 {color: #0000FF}
+
+</style>
+</head>
+
+<body>
+<p><span class="X-Large-Bold-RED">エクセル関数</span></p>
+<p class="Large-Bold-Red">・標準正規分布</p>
+<p class="Blue-Bold">・NORMSDIST(x)　：　標準正規分布（μ=0, σ=1）の累積分布関数</p>
+<p>\(\Large \displaystyle   \hspace{75pt} \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^x exp \left( - \frac{t^2}{2} \right) dt \)</p>
+<p class="Blue-Bold">・NORM.S.DIST(x, TRURE)　：　標準正規分布（μ=0, σ=1）の累積分布関数</p>
+<p>\(\Large \displaystyle   \hspace{75pt} \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^x exp \left( - \frac{t^2}{2} \right) dt \)</p>
+<p><img src="Gauss-101.png" width="434" height="321" alt=""/></p>
+<p>正規分布の色付けした面積を示しますが，グラフ化すると，</p>
+<p><img src="Gauss-104.png" width="525" height="382" alt=""/></p>
+<p>となります．</p>
+<p>&nbsp;</p>
+<p class="Blue-Bold">・NORM.S.DIST(x, FALSE)　：　標準正規分布（μ=0, σ=1）の確率密度</p>
+<p>\(\Large \displaystyle   \hspace{75pt} \frac{1}{\sqrt{2 \pi}}  exp \left( - \frac{t^2}{2} \right)  \)</p>
+<p class="Blue-Bold">・NORM.S.DIST(x)　：　標準正規分布（μ=0, σ=1）の確率密度</p>
+<p>\(\Large \displaystyle   \hspace{75pt} \frac{1}{\sqrt{2 \pi}}  exp \left( - \frac{x^2}{2} \right)  \)</p>
+<p><img src="Gauss-102.png" width="435" height="318" alt=""/></p>
+<p>&nbsp;</p>
+<p><span class="Blue-Bold">NORMS.DIST≒NORMSDIST</span>であるが関数形式の有無などが違います．</p>
+<p>&nbsp;</p>
+<p class="Large-Bold-Red">・正規分布</p>
+<p class="Blue-Bold">・NORM.DIST(x, μ, σ, TRUE)　：　正規分布の累積分布関数</p>
+<p>\(\Large \displaystyle   \hspace{75pt} \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{- \infty}^x exp \left\{ - \frac{(t - \mu)^2}{2 \sigma^2} \right\} dt \)</p>
+<p><img src="Gauss-101.png" width="434" height="321" alt=""/></p>
+<p class="Blue-Bold">・NORM.DIST(x, μ, σ, FALSE)　：　正規分布の確率密度</p>
+<p>\(\Large \displaystyle   \hspace{75pt} \frac{1}{\sqrt{2 \pi \sigma^2}}  exp \left\{ - \frac{(x - \mu)^2}{2 \sigma^2} \right\}  \)</p>
+<p><img src="Gauss-102.png" width="435" height="318" alt=""/></p>
+<p>&nbsp;</p>
+<p>関数形式（TRUE，FALSE）の有無によって結果が異なりますので，表にまとめておきます．</p>
+<table width="630" border="1">
+  <tbody>
+    <tr>
+      <td width="186" style="text-align: center">&nbsp;</td>
+      <td colspan="4" style="text-align: center">関数形式</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">&nbsp;</td>
+      <td width="141" style="text-align: center">なし</td>
+      <td width="110" style="text-align: center">TRUE</td>
+      <td width="85" style="text-align: center">FALSE</td>
+      <td width="74" style="text-align: center">ブランク</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">(x)</td>
+      <td style="text-align: center">(x,TRUE)</td>
+      <td style="text-align: center">(x,FALSE)</td>
+      <td style="text-align: center">(x,)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">NORMSDIST</td>
+      <td class="Blue" style="text-align: center">累積分布関数</td>
+      <td class="Red" style="text-align: center">×</td>
+      <td class="Red" style="text-align: center">×</td>
+      <td class="Red" style="text-align: center">×</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">NORM<span class="Red">.S.</span>DIST</td>
+      <td class="Red" style="text-align: center">×</td>
+      <td class="Blue" style="text-align: center">累積分布関数</td>
+      <td style="text-align: center">確率密度</td>
+      <td style="text-align: center">確率密度</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">NORMDIST</td>
+      <td class="Red" style="text-align: center">×</td>
+      <td class="Blue" style="text-align: center">累積分布関数</td>
+      <td style="text-align: center">確率密度</td>
+      <td style="text-align: center">確率密度</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">NORM<span class="Red">.</span>DIST</td>
+      <td class="Red" style="text-align: center">×</td>
+      <td class="Blue" style="text-align: center">累積分布関数</td>
+      <td style="text-align: center">確率密度</td>
+      <td style="text-align: center">確率密度</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span class="Large-Bold-Red">・正規分布の累積分布関数の逆関数</span></p>
+<p>逆関数は，上図の「正規分布の<span class="Red-Bold">累積</span>分布関数」のX,Yをいれかえたものとなり，</p>
+<p><img src="Gauss-105.png" width="567" height="575" alt=""/></p>
+<p>となります．</p>
+<p>どうも，エクセルには，正規分布の逆関数 は用意されていないようです．</p>
+<p>たぶん，この場合，二つの解が出てしまうからなのかもしれませんね（±aとか）． </p>
+<p>また，横軸の値は０～１で，０，１の場合はエラーが出ます </p>
+<p>&nbsp;</p>
+<p><span class="Blue-Bold">・NORM.INV(x,μ,σ)= NORMINV(x,μ,σ)　：　正規分布の</span><span class="Large-Bold-Blue">累積分布関数</span><span class="Blue-Bold">の逆関数</span></p>
+<p>\(\Large \displaystyle   \hspace{75pt} \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{- \infty}^x exp \left\{ - \frac{(t - \mu)^2}{2 \sigma^2} \right\} dt \)　の逆関数</p>
+<p><span class="Blue-Bold">・NORM.S.INV(x)= NORMSINV(x)　：　標準正規分布の</span><span class="Large-Bold-Blue">累積分布関数</span><span class="Blue-Bold">の逆関数</span></p>
+<p>\(\Large \displaystyle   \hspace{75pt} \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^x exp \left( - \frac{t^2}{2} \right) dt \)　の逆関数</p>
+<p>の関係があります．</p>
+<p>　</p>
+<p><a href="Excel-function.html"><br />
+</a></p>
+<p><span class="style7"><a href="Excel-function.html"><img src="L-arrow.png" alt="l" width="57" height="34" /></a> <a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span><a href="Excel-Gauss-01_2.html"><img src="R-arrow.png" alt="r" width="57" height="34" border="0" /></a></p>
+</body>
+</html>

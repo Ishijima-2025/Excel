@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel-01</title>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+<link href="160324.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.style7 {color: #000000; }
+</style>
+</head>
+
+<body>
+<p class="X-Large-Bold-Blue"><span class="X-Large-Bold-RED">マイナスとべき乗</span></p>
+<p>&nbsp;</p>
+<p>普段の計算での順番では，<br />
+　<span class="Large-Bold-Blue">括弧，べき乗（キャレット），かけ算・割り算，足し算・引き算</span><br />
+と行くはずなのですが，エクセルの場合には，<a href="https://support.office.com/ja-jp/article/演算子と-Excel-での優先順位-48be406d-4975-4d31-b2b8-7af9e0e2878a" target="_blank">ここ</a>，にあるように順番が異なります．</p>
+<p>なんと，<br />
+　<span class="Large-Bold-Blue">正負．．．．．キャレット</span><br />
+となっているのです．ですので，</p>
+<p class="X-Large-Blue">=-2^2</p>
+<p>と計算させると，</p>
+<p class="X-Large-Blue">=-2^2　→　4</p>
+<p>となり，まず，-2，を計算し，その二乗を求めるのです．</p>
+<p>正しく計算させるためには，</p>
+<p class="X-Large-Blue">=-<span class="X-Large-RED">(</span>2^2<span class="X-Large-RED">)</span></p>
+<p>としなければなりません．</p>
+<p>一番困るのが，正規分布の計算．</p>
+<p class="X-Large-Blue">= A*exp(-(x-x0)^2/(2*sigma^2))</p>
+<p>とすると，-(x-x0)，を最初に計算するのでおかしな値となります．</p>
+<p>正しく計算するためには，</p>
+<p><span class="X-Large-Blue">= A*exp(-</span><span class="X-Large-RED">(</span><span class="X-Large-Blue">(x-x0)^2/(2*sigma^2)</span><span class="X-Large-RED">)</span><span class="X-Large-Blue">)</span></p>
+<p>と括弧を一つ余計に入れなくてはなりません．</p>
+<p><span class="style7"><a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a> <a href="Excel-02.html"><img src="R-arrow.png" alt="r" width="57" height="34" /></a></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

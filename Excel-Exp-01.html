@@ -1,0 +1,134 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel-Exponential</title>
+<link href="250219.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.style7 {color: #000000; }
+</style>
+</head>
+
+<body>
+<p><span class="Red-Large-Bold">エクセルでの近似 - R二乗値の求め方 - 指数関数の場合-01</span></p>
+<p>&nbsp;</p>
+<p><span class="Red-Bold">エクセルでの近似</span>について考えます．</p>
+<p>今回は<span class="Red-Bold">指数関数</span>．</p>
+<p>\( \Large     \displaystyle  y=a \ e^{bx} \)</p>
+<p>ご存じの通り，指数関数近似では，<br>
+　両辺を対数変換する<br>
+　対数にした左辺（ln(y))とｘとで直線近似を行う<br>
+というのが一般的です，エクセルでも同様の方法をとっています．</p>
+<p>\( \Large      \begin{eqnarray} \displaystyle  ln(y) &amp;=&amp;ln(a \ e^{bx}) \\<br>
+  &amp;=&amp; ln(a) + b \ x
+\\<br>
+\end{eqnarray}  \)</p>
+<p>ln(y)とｘとの間には直線関係がありますので，直線近似が可能となります．</p>
+<p>実際に確認してみましょう．</p>
+<table width="200" border="1">
+  <tbody>
+    <tr>
+      <td width="81">X</td>
+      <td width="103">Y</td>
+    </tr>
+    <tr>
+      <td align="right">1</td>
+      <td align="right">70</td>
+    </tr>
+    <tr>
+      <td align="right">2</td>
+      <td align="right">183</td>
+    </tr>
+    <tr>
+      <td align="right">3</td>
+      <td align="right">340</td>
+    </tr>
+    <tr>
+      <td align="right">4</td>
+      <td align="right">649</td>
+    </tr>
+    <tr>
+      <td align="right">5</td>
+      <td align="right">1243</td>
+    </tr>
+    <tr>
+      <td align="right">6</td>
+      <td align="right">1979</td>
+    </tr>
+    <tr>
+      <td align="right">7</td>
+      <td align="right">4096</td>
+    </tr>
+    <tr>
+      <td align="right">8</td>
+      <td align="right">6440</td>
+    </tr>
+    <tr>
+      <td align="right">9</td>
+      <td align="right">8459</td>
+    </tr>
+    <tr>
+      <td align="right">10</td>
+      <td align="right"><p>12154</p></td>
+    </tr>
+  </tbody>
+</table>
+<p>（どこかのサイトの数字を拾ってきたのですが．．．すいません，忘れました，わかったらリンクします） </p>
+<p>このデータをエクセルで指数近似すると，</p>
+<p><img src="Excel-exp-01.png" width="840" height="480" alt=""/></p>
+<p>となり，近似してくれます（近似があまりうまくいっていないのは後程，ここ，で）</p>
+<p>対数をとって，表示させ，直線近似を行うと，</p>
+<p><img src="Excel-exp-02.png" width="839" height="480" alt=""/></p>
+<p>と結構きれいな直線に乗り，近似もうまくいっています．ここから，</p>
+<p>\( \Large     \displaystyle  a = e^{4.0699} = 58.883 \)</p>
+<p>\( \Large     \displaystyle  b =0.5694 \)</p>
+<p>が指数の近似解となるわけです．</p>
+<p>&nbsp;</p>
+<p>しかし．．．指数近似した際の，<span class="Large-Red">R<sup>2</sup></span>，の値，<span class="Large-Red">0.953</span>，はどこから来た値でしょう？</p>
+<p><span class="Blue">相関係数</span>は，</p>
+<p>\( \Large     Cov = \frac{\displaystyle \sum_{i=1}^n (x_i    - \overline{x})(y_i    - \overline{y})    }{\sqrt{\displaystyle    \sum_{i=1}^n (x_i - \overline{x}  )^2} \sqrt{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2} } =  0.9158 \)</p>
+<p>\( \Large     Cov^2 = \color{blue}{  0.8386} \)</p>
+<p>決定係数，<span class="Blue">R<sub>1</sub><sup>2</sup></span>，は，</p>
+<p>\( \Large      R_1^2 = 1 - \frac{\displaystyle \sum_{i=1}^n (y_i    - \overline{y})^2    }{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2}   = \color{blue}{0.8018} \)</p>
+<p>決定係数，<span class="Blue">R<sub>7</sub><sup>2</sup></span>，は，</p>
+<p>\( \Large      R_7^2 = 1 - \frac{\displaystyle \sum_{i=1}^n (y_i    - \overline{y})^2    }{\displaystyle    \sum_{i=1}^n y_i -^2}   = \color{blue}{0.8904} \)</p>
+<p>対数での直線近似での決定係数，</p>
+<p>\( \Large      R_7^2 =  \color{blue}{0.9828} \)</p>
+<p>どれも合いません．．．</p>
+<p>&nbsp;</p>
+<p>いろいろ探してみましたが，エクセルでの指数関数近似の決定係数に関する記述が見つかりません．</p>
+<p>ただ！英語で検索したところ，ヒットしました．</p>
+<p><a href="https://www.officetooltips.com/excel_365/tips/exponential_trend_equation_and_forecast.html" target="_blank">Exponential trend equation and forecast</a></p>
+<p>つまり．．．</p>
+<p>　\( \Large      \color{red}{y_i} \)の値と近似した際の近似値，\( \Large      \color{red}{\hat{y_i}} \)とのグラフの<span class="Large-Red">相関係数の二乗 or 決定係数，R<sub>1</sub><sup>2</sup></span>，がエクセルでの指数関数近似の決定係数</p>
+<p><br />
+  となるとのことです，実際にグラフにしてみて近似直線を描いてみると，</p>
+<p><img src="Excel-exp-03.png" width="839" height="480" alt=""/></p>
+<p>と，</p>
+<p>\( \Large      R^2 =  \color{red}{0.953} \)</p>
+<p>と，指数近似した際の，<span class="Large-Red">R<sup>2</sup></span>，の値，<span class="Large-Red">0.953</span>，と一致します．</p>
+<p>確かに，</p>
+<p>　実際の値，\( \Large      \color{red}{y_i} \)と近似して推定した値，\( \Large      \color{red}{\hat{y_i}} \)との関係性，相関を見る</p>
+<p>というのは理にかなっていそうですね（きちんとした数学的根拠は私にはわかりませんが．．．）</p>
+<p>&nbsp;</p>
+<p><span class="style7"><a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span></p>
+</body>
+</html>

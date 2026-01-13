@@ -1,0 +1,463 @@
+<!DOCTyPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Regression-Analysis</title>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+<link href="160324.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.style7 {color: #000000; }
+.style10 {color: #000000; }
+.style1 {color: #0000FF}
+</style>
+</head>
+
+<body>
+<h1 class="style1">直線近似における各パラメータの推定誤差</h1>
+<p class="Large-Bold-Blue">線形回帰のパラメータの推定</p>
+<p><a href="Non-linear regression-05.html">こちら</a>，のサイトで，線形回帰の場合の各パラメータの推定を行いました．</p>
+<p>具体的な値は，<a href="https://mkkmkk.com/jmp/jmp3/" target="_blank">参考にしたサイト</a>の値を使わさせていただきます．</p>
+<table width="200" border="1">
+  <tbody>
+    <tr>
+      <td style="text-align: center">i</td>
+      <td style="text-align: center">x</td>
+      <td style="text-align: center">y</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">9</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">10</td>
+    </tr>
+  </tbody>
+</table>
+<p>エクセルで散布図，近似曲線を描くと，</p>
+<p><img src="Non-linear regression-02.png" width="521" height="312" alt=""/></p>
+<p>となります．</p>
+<p>&nbsp;</p>
+<p class="Blue-Bold">散布図からの近似曲線</p>
+<p>エクセルでの散布図からの近似曲線では，</p>
+<p>y = 0.62x + 4.52 </p>
+<p>となります．</p>
+<p>&nbsp;</p>
+<p><a href="Non-linear regression-04.html">真面目に計算</a>を行って見ると，<span class="Large-Bold-Red">推定値</span>は，</p>
+<table width="306" border="1">
+  <tbody>
+    <tr>
+      <td width="60" style="text-align: center">i</td>
+      <td width="44" style="text-align: center">x</td>
+      <td width="48" style="text-align: center">y</td>
+      <td width="51" style="text-align: center">x<sup>2</sup></td>
+      <td width="69" style="text-align: center">xy</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">16</td>
+      <td style="text-align: right">24</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">36</td>
+      <td style="text-align: right">54</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">81</td>
+      <td style="text-align: right">90</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">&nbsp;</td>
+      <td style="text-align: right">&nbsp;</td>
+      <td style="text-align: right">&nbsp;</td>
+      <td style="text-align: right">&nbsp;</td>
+      <td style="text-align: right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">平均</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">24.33</td>
+      <td style="text-align: right">33.17</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">和</td>
+      <td style="text-align: right">24</td>
+      <td style="text-align: right">42</td>
+      <td style="text-align: right">146</td>
+      <td style="text-align: right">199</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">平方和</td>
+      <td style="text-align: right">146</td>
+      <td style="text-align: right">316</td>
+      <td style="text-align: right">8210</td>
+      <td style="text-align: right">12133</td>
+    </tr>
+  </tbody>
+</table>
+<p>\(\Large\displaystyle    \hat{a_1} = \frac{ \overline{x y} - \bar{x} \bar{y} }<br />
+{  \displaystyle   
+ \overline{x^2}-  \bar{x}^2}   
+    = \frac{ 33.17 - 4 \times 7}<br />
+{  24.33-  4^2} = 0.62 
+\)</p>
+<p>\(\Large\displaystyle    \hat{a_0} = \bar{y} -  \frac{ \overline{x y} - \bar{x} \bar{y} }<br />
+{  \displaystyle   
+ \overline{x^2}-  \bar{x}^2}   
+\bar{x}<br />
+= 7-0.62 \times 4
+= 4.52 \)</p>
+<p>となり，エクセルの近似結果と一致します．</p>
+<p>&nbsp;</p>
+<p class="Blue-Bold">回帰分析</p>
+<p>各パラメータの推定値はこのようにエクセルでも計算できますが，各パラメータの推定誤差もエクセルから求めることができます．</p>
+<p>それは，回帰分析，です．</p>
+<p>　データ　→　データ分析　→　回帰分析</p>
+<p>と進めば，</p>
+<table width="1075" border="1">
+  <tbody>   
+  <tr>
+    <td width="78">概要</td>
+    <td width="78"></td>
+    <td width="72"></td>
+    <td width="96"></td>
+    <td width="109"></td>
+    <td width="73"></td>
+    <td width="73"></td>
+    <td width="87"></td>
+    <td width="90"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">回帰統計</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>重相関 R</td>
+    <td align="right">0.934685</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>重決定 R2</td>
+    <td align="right">0.873636</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>補正 R2</td>
+    <td align="right">0.842045</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>標準誤差</td>
+    <td align="right">0.833667</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>観測数</td>
+    <td align="right">6</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="2">分散分析表</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>　</td>
+    <td>自由度</td>
+    <td>変動</td>
+    <td>分散</td>
+    <td>観測された分散比</td>
+    <td>有意 F</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>回帰</td>
+    <td align="right">1</td>
+    <td align="right">19.22</td>
+    <td align="right">19.22</td>
+    <td align="right">27.65468</td>
+    <td align="right">0.00626</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>残差</td>
+    <td align="right">4</td>
+    <td align="right">2.78</td>
+    <td align="right">0.695</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>合計</td>
+    <td align="right">5</td>
+    <td align="right">22</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>　</td>
+    <td>係数</td>
+    <td>標準誤差</td>
+    <td>t </td>
+    <td>P-値</td>
+    <td>下限 95%</td>
+    <td>上限 95%</td>
+    <td>下限 95.0%</td>
+    <td>上限 95.0%</td>
+  </tr>
+  <tr>
+    <td>切片</td>
+    <td align="right" bgcolor="#E0FF00">4.52</td>
+    <td align="right" bgcolor="#E0FF00">0.581578</td>
+    <td align="right">7.771954</td>
+    <td align="right">0.001478</td>
+    <td align="right">2.90528</td>
+    <td align="right">6.13472</td>
+    <td align="right">2.90528</td>
+    <td align="right">6.13472</td>
+  </tr>
+  <tr>
+    <td>X 値 1</td>
+    <td align="right" bgcolor="#E0FF00">0.62</td>
+    <td align="right" bgcolor="#E0FF00">0.117898</td>
+    <td align="right">5.258771</td>
+    <td align="right">0.00626</td>
+    <td align="right">0.292662</td>
+    <td align="right">0.947338</td>
+    <td align="right">0.292662</td>
+    <td align="right">0.947338</td>
+  </tr>
+  </tbody>
+</table>
+<p>となり，各パラメータの推定誤差を計算してくれます．</p>
+<table width="232" border="1">
+  <tbody>
+    <tr>
+      <td width="70">　</td>
+      <td width="70">係数</td>
+      <td width="70">標準誤差</td>
+    </tr>
+    <tr>
+      <td>切片</td>
+      <td align="right">4.52</td>
+      <td align="right">0.581578</td>
+    </tr>
+    <tr>
+      <td>x 値 1</td>
+      <td align="right">0.62</td>
+      <td align="right">0.117898</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p class="Large-Bold-Blue">LINEST</p>
+<p>それ以外にも，標準のエクセル関数，<span class="Blue-Bold"><a href="https://support.microsoft.com/ja-jp/office/linest-%E9%96%A2%E6%95%B0-84d7d0d9-6e50-4101-977a-fa7abf772b6d" target="_blank">LINEST</a></span>，でも推定誤差を計算してくれます．</p>
+<p class="Large-Bold-Red">　=LINEST(B2:B5, A2:A5, TRUE, TRUE)</p>
+<p>のようなフォーマットであり，Yデータ，Xデータ，切片，追加の回帰統計</p>
+<p>を選択します．</p>
+<p>その結果が，</p>
+<table width="232" border="1">
+  <tbody>
+  <tr>
+    <td width="70" align="right" bgcolor="#DAFF00">0.62</td>
+    <td width="70" align="right" bgcolor="#DAFF00">4.52</td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DAFF00">0.117898</td>
+    <td align="right" bgcolor="#DAFF00">0.581578</td>
+  </tr>
+  <tr>
+    <td align="right">0.873636</td>
+    <td align="right">0.833667</td>
+  </tr>
+  <tr>
+    <td align="right">27.65468</td>
+    <td align="right">4</td>
+  </tr>
+  <tr>
+    <td align="right">19.22</td>
+    <td align="right">2.78</td>
+  </tr>
+  </tbody>
+</table>
+<p>となり，</p>
+<table width="436" border="1">
+  <tbody>
+    <tr>
+      <td width="75"><p>行 / 列</p></td>
+      <td width="168"><p>1列目</p></td>
+      <td width="171"><p>2列目</p></td>
+    </tr>
+    <tr>
+      <td><p>1行目</p></td>
+      <td bgcolor="#D1F400"><p>傾き（m）</p></td>
+      <td bgcolor="#D1F400"><p>切片（b）</p></td>
+    </tr>
+    <tr>
+      <td><p>2行目</p></td>
+      <td bgcolor="#D1F400"><p>傾きの標準誤差</p></td>
+      <td bgcolor="#D1F400"><p>切片の標準誤差</p></td>
+    </tr>
+    <tr>
+      <td><p>3行目</p></td>
+      <td><p>R²（決定係数）</p></td>
+      <td><p>y の標準誤差</p></td>
+    </tr>
+    <tr>
+      <td><p>4行目</p></td>
+      <td><p>F値</p></td>
+      <td><p>自由度</p></td>
+    </tr>
+    <tr>
+      <td><p>5行目</p></td>
+      <td><p>回帰平方和</p></td>
+      <td><p>残差平方和</p></td>
+    </tr>
+  </tbody>
+</table>
+<p>を示します．</p>
+<p>次は，<a href="Excel-Exp-01.html">指数近似における決定係数</a>，です．</p>
+<p>&nbsp;</p>
+<p><span class="style10"><a href="Excel-approximation-02.html"><img src="L-arrow.png" alt="l" width="57" height="34" /></a> <a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span><a href="Excel-Exp-01.html"><img src="R-arrow.png" alt="r" width="57" height="34" /></a></p>
+</body>
+</html>

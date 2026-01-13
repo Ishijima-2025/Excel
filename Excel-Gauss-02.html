@@ -1,0 +1,87 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel</title>
+<link href="090413.css" rel="stylesheet" type="text/css" />
+<link href="160324.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+.style7 {color: #000000; }
+
+.style10 {color: #000000; }
+
+.style1 {color: #0000FF}
+
+</style>
+</head>
+
+<body>
+<p><span class="X-Large-Bold-RED">エクセル関数</span></p>
+<p class="Large-Bold-Red">・誤差関数</p>
+<p>誤差関数は，</p>
+<p>\(\Large \displaystyle   erf(x) = \frac{2}{\sqrt{\pi}} \int_{0}^x exp \left( - t^2 \right) dt \)</p>
+<p>で表すことのできる関数です．</p>
+<p>平均０の正規分布の累積分布関数は，</p>
+<p>\(\Large \displaystyle    \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{- \infty}^x exp \left\{ - \frac{t^2}{2 \sigma^2} \right\} dt \)</p>
+<p>なので，誤差関数は，</p>
+<p>\(\Large \displaystyle   \sigma = \frac{1}{\sqrt{2}} \)，の正規分布（平均０）の2倍，さらに０から，ですね．</p>
+<p>\(\Large \displaystyle   erf(0) = 0 \)</p>
+<p>\(\Large \displaystyle   erf(- \infty) = -1 \)</p>
+<p>\(\Large \displaystyle   erf( \infty) = 1 \)</p>
+<p>です．</p>
+<p>&nbsp;</p>
+<p><span class="Large-Bold-RED">エクセル</span>での関数は，</p>
+<p>&nbsp;</p>
+<p class="Blue-Bold">・ERF(x)　：　誤差関数</p>
+<p>\(\Large \displaystyle    \frac{2}{\sqrt{\pi}} \int_{0}^x exp \left( - t^2 \right) dt \)</p>
+<p>と公式通りですが，括弧内のパラメータを二つにすると，</p>
+<p>&nbsp;</p>
+<p class="Blue-Bold">・ERF(a,b)　：　誤差関数（っぽい）</p>
+<p>\(\Large \displaystyle    \frac{2}{\sqrt{\pi}} \int_{a}^b exp \left( - t^2 \right) dt \)</p>
+<p>という計算ができます．これは，</p>
+<p>\(\Large \displaystyle    = \frac{2}{\sqrt{\pi}} \left[ \int_{a}^0 exp \left( - t^2 \right) dt + \int_{0}^b exp \left( - t^2 \right) dt \right]\)</p>
+<p>\(\Large \displaystyle    = \frac{2}{\sqrt{\pi}} \left[ - \int_{0}^a exp \left( - t^2 \right) dt + \int_{0}^b exp \left( - t^2 \right) dt \right]\)</p>
+<p>\(\Large \displaystyle    = erf(b) - erf(a) \)</p>
+<p>となります．したがって，</p>
+<p>\(\Large \displaystyle    erf(a,x) = \frac{2}{\sqrt{\pi}} \int_{a}^x exp \left( - t^2 \right) dt = erf(x) - erf(a) \)</p>
+<p>となるので，-erf(a)，だけ下駄をはかせることになります．</p>
+<p><img src="Gauss-103.png" width="610" height="423" alt=""/></p>
+<p>&nbsp;</p>
+<p class="Blue-Bold">・ERF.PRECISE(x)　：　誤差関数</p>
+<p>\(\Large \displaystyle    \frac{2}{\sqrt{\pi}} \int_{0}^x exp \left( - t^2 \right) dt \)</p>
+<p>であり，<span class="Blue-Bold">ERF(x)</span> = <span class="Blue-Bold">ERF.PRECISE(x)</span>，となります．</p>
+<p>&nbsp;</p>
+<p class="Blue-Bold">・ERFC(x)　：　相補誤差関数</p>
+<p>\(\Large \displaystyle    \frac{2}{\sqrt{\pi}} \int_{x}^{\infty} exp \left( - t^2 \right) dt = 1 - erf(x) \)</p>
+<p>&nbsp;</p>
+<p class="Blue-Bold">・ERFC.PRECISE(x)　：　相補誤差関数</p>
+<p>\(\Large \displaystyle    \frac{2}{\sqrt{\pi}} \int_{x}^{\infty} exp \left( - t^2 \right) dt = 1 - erf(x) \)</p>
+<p>であり，<span class="Blue-Bold">ERFC(x)</span> = <span class="Blue-Bold">ERFC.PRECISE(x)</span>，となります．</p>
+<p>なんで結果が同じ関数があるかは不明ですが，たぶん，長期的な関数の統廃合があるのかもしれません．</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>　</p>
+<p><a href="Excel-function.html"><br />
+</a></p>
+<p><span class="style7"><a href="Excel-Gauss-01_2.html"><img src="L-arrow.png" alt="l" width="57" height="34" /></a> <a href="Tool.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span><a href="Excel-Gauss-03.html"><img src="R-arrow.png" alt="r" width="57" height="34" border="0" /></a></p>
+</body>
+</html>

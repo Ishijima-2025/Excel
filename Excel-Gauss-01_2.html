@@ -1,0 +1,67 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel</title>
+<link href="090413.css" rel="stylesheet" type="text/css" />
+<link href="160324.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+.style7 {color: #000000; }
+
+.style10 {color: #000000; }
+
+.style1 {color: #0000FF}
+
+</style>
+</head>
+
+<body>
+<p><span class="X-Large-Bold-RED">エクセル関数</span></p>
+<p class="Large-Bold-Red">・正規分布の逆関数</p>
+<p class="Blue-Bold"><span class="Blue-Bold">・NORM.INV(x,μ,σ)= NORMINV(x,μ,σ)　：　正規分布の</span><span class="Large-Bold-Blue">累積分布関数</span><span class="Blue-Bold">の逆関数</span></p>
+<p>はあるのに，<span class="Large-Bold-Blue">正規分布の逆関数</span>，はないのかな？と思っていたら，単純な計算で求めることができることに気づきました．</p>
+<p><span class="Blue-Bold">・NORM.DIST(x, μ, σ, TRUE)　：　正規分布の累積分布関数</span></p>
+<p>\(\Large \displaystyle   Y = \frac{1}{\sqrt{2 \pi \sigma^2}} exp \left\{ - \frac{(t - \mu)^2}{2 \sigma^2} \right\}  \)　</p>
+<p>とすると，</p>
+<p>\(\Large \displaystyle exp \left\{ - \frac{(t - \mu)^2}{2 \sigma^2} \right\} =\sqrt{2 \pi \sigma^2} Y \)　</p>
+<p>\(\Large \displaystyle - \frac{(t - \mu)^2}{2 \sigma^2} = ln \left[\sqrt{2 \pi \sigma^2} Y \right] \)　</p>
+<p>\(\Large \displaystyle (t - \mu)^2  = - 2 \sigma^2 ln \left[\sqrt{2 \pi \sigma^2} Y \right] \)　</p>
+<p>\(\Large \displaystyle t - \mu   = \pm \sqrt{- 2 \sigma^2 ln \left[\sqrt{2 \pi \sigma^2} Y \right]} \)　</p>
+<p>\(\Large \displaystyle \color{red}{t    = \pm \sqrt{- 2 \sigma^2 \ ln \left[\sqrt{2 \pi \sigma^2} Y \right]} + \mu} \)　</p>
+<p>となります．</p>
+<p>確認のために，μ=0，σ=1の標準正規分布では，95％の信頼空間の値が1.96でした．</p>
+<p>\(\Large \displaystyle   Y = \frac{1}{\sqrt{2 \pi }} exp \left\{ - \frac{t ^2}{2 } \right\}  \)　</p>
+<p>でt=1.96，を代入すると，Y=0.058</p>
+<p>上記の式にY=0.058を代入すると，</p>
+<p>\(\Large \displaystyle t    = \pm 1.96 \)　</p>
+<p>となり，無事計算できていることがわかります（標準正規分布でなくても，μ≠0，σ≠1，計算結果は合っていました）．</p>
+<p><img src="gauss-201.png" width="616" height="367" alt=""/></p>
+<p>計算式自体は複雑でしたが，単純な計算で推定できます．</p>
+<p>本当はhtml内で計算できたらいいな，と思ったのですが，指数，対数の組み込み方がわかりませんでした．．．．</p>
+<p><a href="Excel-function.html"><br />
+</a></p>
+	
+
+	
+<p><span class="style7"><a href="Excel-function.html"><img src="L-arrow.png" alt="l" width="57" height="34" /></a> <a href="Tool.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span><a href="Excel-Gauss-02.html"><img src="R-arrow.png" alt="r" width="57" height="34" border="0" /></a></p>
+</body>
+</html>

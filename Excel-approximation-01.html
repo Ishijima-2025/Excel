@@ -1,0 +1,88 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel-approximation</title>
+<link href="250219.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.style7 {color: #000000; }
+</style>
+</head>
+
+<body>
+<p class="Red-Large-Bold">エクセルでの近似 - R二乗値の求め方 - 01</p>
+<p>&nbsp;</p>
+<p>エクセルでの近似について考えます．特に，<span class="Red-Large">R二乗値，R<sup>2</sup></span>，について．</p>
+<p><span class="Large-Red">R<sup>2</sup></span>は，０～１の値をとり，1に近いほど，より良い近似，とされています．</p>
+<p>では，いままで勉強してきた，<a href="kinji-001.html">決定係数</a>，<a href="Cov-01.html">相関係数</a>，とどのような関係にあるのでしょう？</p>
+<p>決定係数は，<a href="https://ja.wikipedia.org/wiki/%E6%B1%BA%E5%AE%9A%E4%BF%82%E6%95%B0" target="_blank">Wiki</a>，によると，複数あり，どうも，<span class="Large-Red">R<sub>1</sub><sup>2</sup>，R<sub>7</sub><sup>2</sup></span>，がよく使われるようです．</p>
+<p>また，直線近似の場合は，<a href="kinji-009.html">ここ</a>で示したように，<span class="large-red">相関係数<sup>2</sup>＝決定係数</span>，となります．</p>
+<p>&nbsp;</p>
+<p>まずは，</p>
+<p><span class="Large-Red">・基本の直線近似（切片あり）</span>，</p>
+<p>\( \Large     \displaystyle  y=ax+b \)</p>
+<p>で．<br />
+　a = 1<br />
+　b = 1<br />
+でランダム関数によりばらつきを与えています（オフィスバージョンは365）</p>
+<p><img src="Excel-approximation-01.png" width="839" height="480" alt=""/></p>
+<p>\( \Large     \displaystyle  R^2=\color{red}{0.9881} \)</p>
+<p>相関係数は，</p>
+<p>\( \Large     Cov = \frac{\displaystyle \sum_{i=1}^n (x_i    - \overline{x})(y_i    - \overline{y})    }{\sqrt{\displaystyle    \sum_{i=1}^n (x_i - \overline{x}  )^2} \sqrt{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2} } =  0.9940\)</p>
+<p>\( \Large     Cov^2 =   \color{red}{0.9881} \)</p>
+<p>となり，一致します．</p>
+<p>決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，は，</p>
+<p>\( \Large      R_1^2 = 1 - \frac{\displaystyle \sum_{i=1}^n (y_i    - \overline{y})^2    }{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2}   = \color{red}{0.9881} \)</p>
+<p>となり，<span class="Red">直線近似（切片あり)</span>は，決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，を示すものと思われます．</p>
+<p>&nbsp;</p>
+<p>次に，</p>
+<p><span class="Large-Red">・基本の直線近似（切片固定）</span></p>
+<p>場合はどうなるのでしょう？</p>
+<p><img src="Excel-approximation-03.png" width="839" height="480" alt=""/></p>
+<p>\( \Large     \displaystyle  R^2=0.9881 \)</p>
+<p>相関係数は，</p>
+<p>\( \Large     Cov = \frac{\displaystyle \sum_{i=1}^n (x_i    - \overline{x})(y_i    - \overline{y})    }{\sqrt{\displaystyle    \sum_{i=1}^n (x_i - \overline{x}  )^2} \sqrt{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2} } =  0.9940\)</p>
+<p>となり，</p>
+<p>\( \Large     Cov^2 = =  0.9881 \)</p>
+<p>となり，一致します．</p>
+<p>決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，は，</p>
+<p>\( \Large      R_1^2 = 1 - \frac{\displaystyle \sum_{i=1}^n (y_i    - \overline{y})^2    }{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2}   = 0.9881 \)</p>
+<p>となり，<span class="Red">直線近似（切片固定)</span>は，決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，を示すものと思われます．</p>
+<p>&nbsp;</p>
+<p>次に，</p>
+<p><span class="Large-Red">・基本の直線近似（切片あり，ｘもばらつく）</span></p>
+<p>場合はどうなるのでしょう？</p>
+<p><img src="Excel-approximation-02.png" width="839" height="480" alt=""/></p>
+<p>\( \Large     \displaystyle  R^2=0.9871 \)</p>
+<p>相関係数は，</p>
+<p>\( \Large     Cov = \frac{\displaystyle \sum_{i=1}^n (x_i    - \overline{x})(y_i    - \overline{y})    }{\sqrt{\displaystyle    \sum_{i=1}^n (x_i - \overline{x}  )^2} \sqrt{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2} } =  0.9935\)</p>
+<p>となり，</p>
+<p>\( \Large     Cov^2 = =  0.9871 \)</p>
+<p>となり，一致します．</p>
+<p>決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，は，</p>
+<p>\( \Large      R_1^2 = 1 - \frac{\displaystyle \sum_{i=1}^n (y_i    - \overline{y})^2    }{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2}   = 0.9871 \)</p>
+<p>となり，<span class="Red">直線近似（切片あり，ｘもばらつく）</span>は，決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，を示すものと思われます．</p>
+<p>&nbsp;</p>
+<p>次に，<span class="Red">直線近似（切片なし）</span>，<span class="Red">直線近似（切片固定）</span>，を考えましょう．</p>
+<p>&nbsp;</p>
+<p><span class="style7"><a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a> <a href="Excel-approximation-02.html"><img src="R-arrow.png" alt="r" width="57" height="34" border="0" /></a></span></p>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel-approximation</title>
+<link href="250219.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.style7 {color: #000000; }
+.style1 {color: #0000FF}
+</style>
+</head>
+
+<body>
+<p><span class="Red-Large-Bold">エクセルでの近似 - R二乗値の求め方 - 02</span></p>
+<p>&nbsp;</p>
+<p>次には，</p>
+<p class="Red-Large">・基本の直線近似（切片なし）</p>
+<p>\( \Large     \displaystyle  y=ax \)</p>
+<p>で．<br />
+　a = 1<br />
+でランダム関数によりばらつきを与えています．</p>
+<p><img src="Excel-approximation-04.png" width="839" height="480" alt=""/></p>
+<p>\( \Large     \displaystyle  R^2=\color{red}{0.9968} \)</p>
+<p>相関係数は，</p>
+<p>\( \Large     Cov = \frac{\displaystyle \sum_{i=1}^n (x_i    - \overline{x})(y_i    - \overline{y})    }{\sqrt{\displaystyle    \sum_{i=1}^n (x_i - \overline{x}  )^2} \sqrt{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2} } =  0.9940\)</p>
+<p>\( \Large     Cov^2 = \color{blue}{  0.9881} \)</p>
+<p>となり，<span class="Large-Blue">一致しません</span>．</p>
+<p>決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，は，</p>
+<p>\( \Large      R_1^2 = 1 - \frac{\displaystyle \sum_{i=1}^n (y_i    - \overline{y})^2    }{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2}   = \color{blue}{0.9843} \)</p>
+<p>となり，<span class="Large-Blue">一致しません</span>．</p>
+<p>しかし，決定係数，<span class="Large-Bold-RED">R<sub>7</sub><sup>2</sup></span>，は，</p>
+<p>\( \Large      R_7^2 = 1 - \frac{\displaystyle \sum_{i=1}^n (y_i    - \overline{y})^2    }{\displaystyle    \sum_{i=1}^n y_i -^2}   = \color{red}{0.9968} \)</p>
+<p>となり，<span class="Red">直線近似（切片あり)</span>は，決定係数，<span class="Large-Red">R<sub>7</sub><sup>2</sup></span>，を示すものと思われます．</p>
+<p>&nbsp;</p>
+<p>次に，</p>
+<p class="Large-Bold-RED">・基本の直線近似（切片固定）</p>
+<p>場合はどうなるのでしょう？</p>
+<p><img src="Excel-approximation-03.png" width="839" height="480" alt=""/></p>
+<p>\( \Large     \displaystyle  R^2=0.9881 \)</p>
+<p>相関係数は，</p>
+<p>\( \Large     Cov = \frac{\displaystyle \sum_{i=1}^n (x_i    - \overline{x})(y_i    - \overline{y})    }{\sqrt{\displaystyle    \sum_{i=1}^n (x_i - \overline{x}  )^2} \sqrt{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2} } =  0.9940\)</p>
+<p>となり，</p>
+<p>\( \Large     Cov^2 = \color{red}{0.9881} \)</p>
+<p>となり，一致します．</p>
+<p>決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，は，</p>
+<p>\( \Large      R_1^2 = 1 - \frac{\displaystyle \sum_{i=1}^n (y_i    - \overline{y})^2    }{\displaystyle    \sum_{i=1}^n (y_i - \overline{y}  )^2}   = \color{red}{0.9881} \)</p>
+<p>となり，<span class="Red">直線近似（切片固定)</span>は，決定係数，<span class="Large-Red">R<sub>1</sub><sup>2</sup></span>，を示すものと思われます．</p>
+<p>&nbsp;</p>
+<p class="large-red">・理由</p>
+<p>なぜ，切片のあるなしで計算方法が違うのか，この違いについては，いろいろなサイトに載っていますが，</p>
+<p>　<a href="https://support.microsoft.com/ja-jp/topic/%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E7%B7%9A%E5%BD%A2%E8%BF%91%E4%BC%BC%E6%9B%B2%E7%B7%9A%E3%81%AE%E5%86%85%E9%83%A8%E8%A8%88%E7%AE%97%E3%81%AE%E5%A4%89%E6%9B%B4-282028ce-5bce-4393-a488-3d6c167c79a5" target="_blank">マイクロソフト</a></p>
+<p>自体にも記載があります，バージョンによって異なるようです（今回検証したのは365）．</p>
+<p>どうも別のソフト（検証したのは，R）も同様の計算方法のようです．</p>
+<p>なぜか，という点については，<a href="https://yolo-kiyoshi.com/2020/12/21/post-2457/" target="_blank">ここ</a>，に説明がありましたが，私の読解力では読み解けませんでした（計算式に，二乗，が入っていないのはなぜだろう？）</p>
+<p><a href="https://biolab.sakura.ne.jp/r-squared.html" target="_blank">こちらのサイト</a>，にも記載がありましたが，なぜか，についての記載はないようです．</p>
+<p>今のところ，私の理解力では，そういうものなのだ，というように理解していくしかなさそうです．</p>
+<p>&nbsp;</p>
+<p>次は，<span class="style1">直線近似における各パラメータの推定誤差</span>，です．</p>
+<p>&nbsp;</p>
+<p><span class="style7"><a href="Excel-approximation-01.html"><img src="L-arrow.png" alt="l" width="57" height="34" /></a> <a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span><a href="Excel-Linear regression-01.html"><img src="R-arrow.png" alt="r" width="57" height="34" /></a></p>
+</body>
+</html>

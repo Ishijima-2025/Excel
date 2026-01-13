@@ -1,0 +1,78 @@
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["mhchem.js"]
+  },
+  CommonHTML: {
+    matchFontHeight: false
+  }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Excel-Exponential</title>
+<link href="250219.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.style7 {color: #000000; }
+</style>
+</head>
+
+<body>
+<p><span class="Red-Large-Bold">エクセルでの近似 - 対数か実数か</span></p>
+<p>&nbsp;</p>
+<p><span class="Red-Large">エクセルでの近似</span>について考えます．</p>
+<p>今回は<span class="Red-Bold">指数関数</span>．</p>
+<p>\( \Large     \displaystyle  y=a \ e^{bx} \)</p>
+<p>ご存じの通り，指数関数近似では，<br>
+　両辺を対数変換する<br>
+　対数にした左辺（ln(y))とｘとで直線近似を行う<br>
+というのが一般的です，エクセルでも同様の方法をとっています．</p>
+<p>\( \Large      \begin{eqnarray} \displaystyle  ln(y) &amp;=&amp;ln(a \ e^{bx}) \\<br>
+  &amp;=&amp; ln(a) + b \ x
+\\<br>
+\end{eqnarray}  \)</p>
+<p>ln(y)とｘとの間には直線関係がありますので，直線近似が可能となります．</p>
+<p>この手法が正しいかどうか，実際に確認してみましょう．</p>
+<p>このデータをエクセルで指数近似すると，</p>
+<p><img src="Excel-exp-01.png" width="840" height="480" alt=""/></p>
+<p>となり，近似してくれますが，あまりうまくいっていないことがわかります．</p>
+<p>それは，最小二乗が実際のデータと予測値との差分をできるだけ減らす，ことにあるからです．</p>
+<p>実際に恥のデータで見比べてみると，</p>
+<p><img src="Excel-exp-11.png" width="768" height="782" alt=""/></p>
+<p>右端の結果は実際には5,000もの差があるのに,対数表時にすると0.36，左端のデータは33しか差がないのに，対数表示では0.39と右端の対数の結果より大きくなっちゃいます．</p>
+<p>対数にすることで，より大きな値よりも小さい値にウェイトをかけた近似，となります．</p>
+<p>&nbsp;</p>
+<p>では，指数表示でより正確な近似を行うためにはどうしたらいいか，それは，</p>
+<p class="Large-Bold-RED">　非線形近似</p>
+<p>となります，中身については私もよくわからないのですが，エクセルには，</p>
+<p class="Large-Bold-RED">　ソルバー</p>
+<p>という便利な解析機能がありますので，これを用いればいいことがわかります．実際に行ってみると，</p>
+<p><img src="Excel-exp-12.png" width="840" height="480" alt=""/></p>
+<p>となり（<span class="Blue">青線が指数近似</span>，<span class="Red">赤線がソルバー</span>）となり，見かけ上もよく近似できていることがわかります．</p>
+<p>実際に残差の二乗和を見ても，<span class="Large-Red">6/100</span>，程度に減少していることがわかります．</p>
+<p>&nbsp;</p>
+<p>ただ，<br>
+  <span class="Large-Blue">　×　指数近似</span><br>
+  <span class="Large-Red">　〇　ソルバー</span><br>
+がいつも適用できるわけではなさそうです．</p>
+<p>例えば，あまりｙの値の桁が変わらない場合（<span class="Large-Blue">縦軸に注目</span>），</p>
+<p><img src="Excel-exp-13.png" width="839" height="480" alt=""/></p>
+<p>ほとんど二つの近似に差がありません（この場合には残差二乗和は95％程度の減少にしかならない）．</p>
+<p>さらに，ソルバーでは，<span class="Large-Red">初期値</span>，が重要となります，実際に上のデータで異なる初期値を与えると指数近似のほうが残差二乗和が少なくなる場合があります．</p>
+<p>要は，<span class="Large-Red">正しく理解し，正しく使う</span>，が必要ですね．</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span class="style7"><a href="index.html"><img src="TOP.png" alt="t" width="57" height="34" /></a></span></p>
+</body>
+</html>
